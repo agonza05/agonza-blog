@@ -7,15 +7,15 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 module.exports = {
   siteMetadata: {
     // Used for the title template on pages other than the index site
-    siteTitle: `Alberto Gonzalez`,
+    siteTitle: `Dull Networking`,
     // Default title of the page
-    siteTitleAlt: `Blog - Alberto Gonzalez`,
+    siteTitleAlt: `Dull Networking | Alberto Gonzalez's Blog`,
     // Can be used for e.g. JSONLD
     siteHeadline: `Blog - Alberto Gonzalez`,
     // Will be used to generate absolute URLs for og:image etc.
     siteUrl: `https://blog.agonza.net`,
     // Used for SEO
-    siteDescription: `Simple personal blog.`,
+    siteDescription: `Alberto Gonzalez's blog. Howtos and runbooks for network related topics. A simple knowledge base of my daily tasks as a network administrator.`,
     // Will be set on the <html /> tag
     siteLanguage: `en`,
     // Used for og:image and must be placed inside the `static` folder
