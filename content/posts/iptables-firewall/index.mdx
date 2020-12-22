@@ -10,7 +10,7 @@ tags:
 Runbook for adding security rules to a linux firewall using iptables to allow traffic for different communications flows.
 
 Problem
-=======
+-------
 
 Allow traffic on a linux server functioning as a firewall using iptables:
 
@@ -27,41 +27,50 @@ Ports:
   - TCP 22
 
 Solution
-========
+--------
 
-Export ruleset
+1. Export current ruleset
+2. Create objects
+3. Define allowed protocols and ports
+4. Define sources
+5. Define destinations
+6. Define action
+7. Activate changes
+
+Implementation
 --------------
+
+From the linux shell, export the current ruleset:
 
 ```
 iptables-save > iptables-ruleset
 ```
 
-Object creation
----------------
-
-Edit file `iptables-ruleset` with a text editor like `vim`
+Edit the file `iptables-ruleset` with a text editor like `vim`
 
 ```
+# Object creation
 :SOURCES - [0:0]
 :DESTINATIONS - [0:0]
-:POLICY - [0:0]
-```
+:ACTION - [0:0]
 
-Rule definition
----------------
-
-```
+# Define ports and protocol
 -A FORWARD -p tcp -m multiport --dports 22,1433 -m state --state NEW -j SOURCES
+
+# Define sources
 -A SOURCES -s 10.10.30.0/24 -j DESTINATIONS
 -A SOURCES -s 10.10.40.0/24 -j DESTINATIONS
--A DESTINATIONS -d 10.30.10.0/24 -j POLICY
--A DESTINATIONS -d 10.30.20.0/24 -j POLICY
--A POLICY -j LOG --log-prefix "POLICY_LOG:" --log-level 6
--A POLICY -j ACCEPT
+
+# Define destinations
+-A DESTINATIONS -d 10.30.10.0/24 -j ACTION
+-A DESTINATIONS -d 10.30.20.0/24 -j ACTION
+
+# Define action
+-A ACTION -j LOG --log-prefix "RULE_LOG:" --log-level 6
+-A ACTION -j ACCEPT
 ```
 
-Activate ruleset
-----------------
+Save and close the editor. From the linux shell, import the new ruleset: 
 
 ```
 iptables-restore < iptables-ruleset
