@@ -29,7 +29,7 @@ A blog seems to be a optimal option, as it allows me to share and contribute bac
 
 <Disqus
   config={
-    url: `${config.siteUrl+location.pathname}`,
+    url: post.canonicalUrl,
     identifier: post.id,
     title: post.title,
   }
