@@ -2,7 +2,7 @@ import { Disqus } from 'gatsby-plugin-disqus'
 
 const DisqusTemplate = () => {
   let disqusConfig = {
-    url: post.canonicalUrl,
+    url: `${config.siteUrl+location.pathname}`,
     identifier: post.id,
     title: post.title,
   }
