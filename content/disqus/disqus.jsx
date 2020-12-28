@@ -1,28 +1,12 @@
 import React from "react"
-import { graphql } from "gatsby"
 import { Disqus } from "gatsby-plugin-disqus"
 
-const DisqusTemplate = ({ data, location }) => {
-  console.log(data)
-  const siteUrl = data.site.siteMetadata.siteUrl
-  const disqusConfig = {
-    url: `${siteUrl+location.pathname}`,
-  }
+const DisqusTemplate = () => {
   return (
     <>
-      <Disqus config={disqusConfig} />
+      <Disqus />
     </>
   )
 }
 
 export default DisqusTemplate
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`
