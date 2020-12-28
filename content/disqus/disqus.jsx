@@ -1,10 +1,11 @@
+import React from "react"
+import { graphql } from "gatsby"
 import { Disqus } from 'gatsby-plugin-disqus'
 
 const DisqusTemplate = () => {
+  const canonicalUrl = data.site.siteMetadata.siteURL + location.pathname
   let disqusConfig = {
-    url: `${config.siteUrl+location.pathname}`,
-    identifier: post.id,
-    title: post.title,
+    url: canonicalUrl,
   }
   return (
     <>
@@ -14,3 +15,13 @@ const DisqusTemplate = () => {
 }
 
 export default DisqusTemplate
+
+export const query = graphql`
+  query DisqusTemplateQuery {
+    site {
+      siteMetadata {
+        siteURL
+      }
+    }
+  }
+`
