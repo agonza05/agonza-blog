@@ -4,9 +4,7 @@ import { Disqus } from "gatsby-plugin-disqus"
 const DisqusTemplate = () => {
   return (
     <>
-      
-      ---
-      
+      <hr />
       <Disqus />
     </>
   )

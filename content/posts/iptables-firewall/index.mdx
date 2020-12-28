@@ -1,5 +1,6 @@
 ---
-title: Add ACL rules to linux firewall using iptables
+title: Allow traffic in a linux firewall using iptables
+description: How to add security rules (ACL) in a linux firewall using iptables to allow traffic for multiple TCP communication flows.
 date: 2020-12-22
 tags:
   - firewall
@@ -7,13 +8,16 @@ tags:
   - linux
 ---
 
-Runbook for adding security rules to a linux firewall using iptables to allow traffic for different communications flows.
+import DisqusTemplate from "../../disqus/disqus";
+
+How to add security rules (ACL) in a linux firewall using iptables to allow traffic for multiple TCP communication flows.
 
 Problem
 -------
 
 Allow traffic on a linux server functioning as a firewall using iptables:
 
+```
 Sources:
   - 10.10.30.0/24
   - 10.10.40.0/24
@@ -25,6 +29,7 @@ Destinations:
 Ports:
   - TCP 1433
   - TCP 22
+```
 
 Solution
 --------
@@ -77,8 +82,10 @@ iptables-restore < iptables-ruleset
 ```
 
 More info
-=========
+---------
 
 - [Iptables tutorial](https://www.hostinger.com/tutorials/iptables-tutorial)
 - [Iptables on Fedora](https://fedoraproject.org/wiki/How_to_edit_iptables_rules)
 - [iptables log](https://stackoverflow.com/questions/21771684/iptables-log-and-drop-in-one-rule)
+
+<DisqusTemplate />
