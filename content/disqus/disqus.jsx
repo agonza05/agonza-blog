@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Disqus } from 'gatsby-plugin-disqus'
 
-const DisqusTemplate = () => {
+const DisqusTemplate = ({ location, data }) => {
   const canonicalUrl = data.site.siteMetadata.siteURL + location.pathname
   let disqusConfig = {
     url: canonicalUrl,
