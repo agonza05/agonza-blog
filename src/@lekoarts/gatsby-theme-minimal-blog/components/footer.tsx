@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Link } from "theme-ui"
-import useSiteMetadata from "../hooks/use-site-metadata"
+import useSiteMetadata from "gatsby-theme-minimal-blog/src/hooks/use-site-metadata"
 
 const Footer = () => {
   const { siteTitle } = useSiteMetadata()
