@@ -9,13 +9,13 @@ module.exports = {
     // Used for the title template on pages other than the index site
     siteTitle: `Dull Networking`,
     // Default title of the page
-    siteTitleAlt: `Dull Networking | Alberto Gonzalez's Blog`,
+    siteTitleAlt: `Dull Networking`,
     // Can be used for e.g. JSONLD
-    siteHeadline: `Blog - Alberto Gonzalez`,
+    siteHeadline: `Dull Networking`,
     // Will be used to generate absolute URLs for og:image etc.
     siteUrl: `https://blog.agonza.net`,
     // Used for SEO
-    siteDescription: `Alberto Gonzalez's blog. Howtos and runbooks for network related topics. A simple knowledge base of my daily tasks as a network administrator.`,
+    siteDescription: `Dull Networking. Howtos and runbooks for network related topics. A simple knowledge base of daily tasks as a network administrator in a multi-vendor environment.`,
     // Will be set on the <html /> tag
     siteLanguage: `en`,
     // Used for og:image and must be placed inside the `static` folder
