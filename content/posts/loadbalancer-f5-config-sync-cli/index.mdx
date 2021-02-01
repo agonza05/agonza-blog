@@ -1,0 +1,69 @@
+---
+title: Sync configuration of a F5 Big-IP LTM cluster
+description: How to sync the configuration of a F5 Big-IP LTM cluster using the cli
+date: 2021-02-01
+tags:
+  - loadbalancer
+  - f5
+  - ltm
+  - cli
+  - big-ip
+canonicalUrl: https://dullnetworking.com/sync-configuration-of-a-f5-big-ip-ltm-cluster
+---
+
+import DisqusTemplate from "../../disqus/disqus";
+
+How to sync the configuration of a F5 Big-IP LTM cluster using the cli
+
+Problem
+-------
+
+Sync configuration via cli
+
+Solution
+--------
+
+1. Enter `tmsh` mode
+2. Verify sync-group
+3. Sync configuration from device to group
+
+Implementation
+--------------
+
+```
+admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# list cm device-group type
+cm device-group LB-CLUSTER-01 {
+    type sync-failover
+}
+cm device-group device_trust_group {
+    type sync-only
+}
+cm device-group gtm {
+    type sync-only
+}
+admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# run cm config-sync to-group LB-CLUSTER-01
+admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# 
+admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# show cm sync-status
+
+----------------------------------------------------------------------------------
+CM::Sync Status
+----------------------------------------------------------------------------------
+Color    green
+Status   In Sync
+Mode     high-availability
+Summary  All devices in the device group are in sync
+Details
+         lb02-mgt: connected
+         LB-CLUSTER-01 (In Sync): All devices in the device group are in sync
+         device_trust_group (In Sync): All devices in the device group are in sync
+
+admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)#
+```
+
+More info
+---------
+
+- [K14856: Performing a ConfigSync using tmsh](https://support.f5.com/csp/article/K14856)
+- [K13639: Configuring a device group using tmsh](https://support.f5.com/csp/article/K13639)
+
+<DisqusTemplate />
