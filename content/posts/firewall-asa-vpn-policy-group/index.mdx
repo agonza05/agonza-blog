@@ -1,0 +1,61 @@
+---
+title: Create a group policy for a IKEv1 IPSec tunnel on Cisco ASA
+description: How to create a group policy on a Cisco ASA firewall for the tunnel configuration of a LAN-to-LAN IKEv1 IPSec tunnel
+date: 2020-12-28
+tags:
+  - firewall
+  - asa
+  - vpn
+canonicalUrl: https://dullnetworking.com/create-a-group-policy-for-a-ikev1-ipsec-tunnel-on-cisco-asa
+---
+
+import DisqusTemplate from "../../disqus/disqus";
+
+How to create a group policy on a Cisco ASA firewall for the tunnel configuration of a LAN-to-LAN IKEv1 IPSec tunnel
+
+Problem
+-------
+
+Configure a group policy for a IKEv1 tunnel
+
+Solution
+--------
+
+1. Configure the group policy type
+2. Configure the group policy attributes
+3. Assign the group policy to the tunnel
+
+Implementation
+--------------
+
+Configure the group policy type as internal, by running the command `group-policy <POLICY_NAME> internal`
+
+```
+asa01/pri/act# configure terminal                  
+asa01/pri/act(config)# group-policy POLICY_IKEV1 internal
+```
+
+Configure the group policy attributes, by running the command `group-policy <POLICY_NAME> attributes`
+
+```
+asa01/pri/act(config)# group-policy POLICY_IKEV1 attributes
+asa01/pri/act(config-group-policy)# vpn-tunnel-protocol ikev1
+asa01/pri/act(config-group-policy)# exit
+```
+
+Assign the new group policy to the tunnel group configuration
+
+```
+asa01/pri/act(config)# tunnel-group 1.1.1.1 type ipsec-l2l
+asa01/pri/act(config)# tunnel-group 1.1.1.1 general-attributes
+asa01/pri/act(config-tunnel-general)# default-group-policy POLICY_IKEV1
+asa01/pri/act(config-tunnel-general)# end
+asa01/pri/act#
+```
+
+More info
+---------
+
+- [Cisco ASA Series CLI Configuration Guide](https://www.cisco.com/c/en/us/td/docs/security/asa/asa90/configuration/guide/asa_90_cli_config/vpn_groups.html)
+
+<DisqusTemplate />

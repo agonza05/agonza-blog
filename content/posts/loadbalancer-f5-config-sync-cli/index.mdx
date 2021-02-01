@@ -5,9 +5,7 @@ date: 2021-02-01
 tags:
   - loadbalancer
   - f5
-  - ltm
-  - cli
-  - big-ip
+  - device management
 canonicalUrl: https://dullnetworking.com/sync-configuration-of-a-f5-big-ip-ltm-cluster
 ---
 
@@ -30,6 +28,8 @@ Solution
 Implementation
 --------------
 
+Verify the name of the sync group. Usually, is the device group of type `sync-failover`
+
 ```
 admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# list cm device-group type
 cm device-group LB-CLUSTER-01 {
@@ -41,8 +41,18 @@ cm device-group device_trust_group {
 cm device-group gtm {
     type sync-only
 }
+```
+
+Sync configuration by running the command `run cm config-sync to-group <GROUP_NAME>`
+
+```
 admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# run cm config-sync to-group LB-CLUSTER-01
 admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# 
+```
+
+Verify the configuration is In Sync by running the command `show cm sync-status`
+
+```
 admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# show cm sync-status
 
 ----------------------------------------------------------------------------------
