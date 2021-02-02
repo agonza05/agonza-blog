@@ -1,6 +1,6 @@
 ---
 title: Allow traffic in a linux firewall using iptables
-description: How to add security rules (ACL) in a linux firewall using iptables to allow traffic for multiple TCP communication flows.
+description: How to add security rules (ACL) in a linux firewall using iptables to allow traffic for multiple TCP communication flows
 date: 2020-12-22
 tags:
   - firewall
@@ -16,7 +16,7 @@ How to add security rules (ACL) in a linux firewall using iptables to allow traf
 Problem
 -------
 
-Allow traffic on a linux server functioning as a firewall using iptables:
+Allow traffic in a linux server functioning as a firewall using iptables:
 
 | Source        | Destination   | Port     |
 | ------------- |:-------------:| -------- |
@@ -32,13 +32,13 @@ Allow traffic on a linux server functioning as a firewall using iptables:
 Solution
 --------
 
-1. Export current ruleset
-2. Create objects
-3. Define allowed protocols and ports
-4. Define sources
-5. Define destinations
-6. Define action
-7. Activate changes
+1. Export current ruleset.
+2. Create objects.
+3. Define allowed protocols and ports.
+4. Define sources.
+5. Define destinations.
+6. Define action.
+7. Activate changes.
 
 Implementation
 --------------
@@ -49,7 +49,7 @@ From the linux shell, export the current ruleset:
 iptables-save > iptables-ruleset
 ```
 
-Edit the file `iptables-ruleset` with a text editor like `vim`
+Edit the file `iptables-ruleset` with a text editor like `vim`:
 
 ```
 # Object creation

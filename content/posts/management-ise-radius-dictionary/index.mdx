@@ -1,0 +1,53 @@
+---
+title: Import Radius dictionary into Cisco ISE
+description: How to import a vendor-specific Radius dictionary into Cisco ISE
+date: 2021-01-04
+tags:
+  - management
+  - cisco ise
+  - radius
+canonicalUrl: https://dullnetworking.com/import-radius-dictionary-into-cisco-ise
+---
+
+import DisqusTemplate from "../../disqus/disqus";
+
+How to import a vendor-specific Radius dictionary into Cisco ISE.
+
+Problem
+-------
+
+Import a Radius dictionary.
+
+Solution
+--------
+
+1. Download the radius dictionary.
+2. Import the dictionary file.
+3. Configure profiles with the dictionary information.
+
+Implementation
+--------------
+
+Download the radius dictionary from either the vendor website or third-party sources. Cisco community offers a wide range of dictionaries for downloading.
+
+Import the file downloaded into Cisco ISE:
+
+1. From the management GUI, go to `Policy > Policy Elements > Dictionaries`
+2. From the Dictionaries panel, expand `System > Radius` and select `Radius Vendors`
+3. Click `Import`
+4. Select the file path and click `Import`
+
+The dictionary information is now available:
+
+1. Go to `Policy > Policy Elements > Results`
+2. Select `Authorization > Authorization Profiles`
+3. Click `Add`
+4. Under `Advanced Attributes Settings`, select the new dictionary to view all its attributes 
+
+More info
+---------
+
+- [Cisco Identity Services Engine Administrator Guide](https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/admin_guide/b_ise_admin_guide_21/b_ise_admin_guide_20_chapter_01001.html)
+- [RADIUS Vendor Dictionaries for 3rd Parties](https://community.cisco.com/t5/security-documents/for-download-radius-vendor-dictionaries-for-3rd-parties/ta-p/3743448)
+
+<DisqusTemplate />

@@ -4,31 +4,31 @@ description: How to sync the configuration of a F5 Big-IP LTM cluster using the 
 date: 2021-02-01
 tags:
   - loadbalancer
-  - f5
-  - device management
+  - f5 ltm
+  - device administration
 canonicalUrl: https://dullnetworking.com/sync-configuration-of-a-f5-big-ip-ltm-cluster
 ---
 
 import DisqusTemplate from "../../disqus/disqus";
 
-How to sync the configuration of a F5 Big-IP LTM cluster using the cli
+How to sync the configuration of a F5 Big-IP LTM cluster using the cli.
 
 Problem
 -------
 
-Sync configuration via cli
+Sync configuration via cli.
 
 Solution
 --------
 
-1. Enter `tmsh` mode
-2. Verify sync-group
-3. Sync configuration from device to group
+1. Enter `tmsh` mode.
+2. Verify sync-group.
+3. Sync configuration from device to group.
 
 Implementation
 --------------
 
-Verify the name of the sync group. Usually, is the device group of type `sync-failover`
+Verify the name of the sync group. Usually, is the device group of type `sync-failover`:
 
 ```
 admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# list cm device-group type
@@ -43,14 +43,14 @@ cm device-group gtm {
 }
 ```
 
-Sync configuration by running the command `run cm config-sync to-group <GROUP_NAME>`
+Sync configuration by running the command `run cm config-sync to-group <GROUP_NAME>`:
 
 ```
 admin@(lb01-mgt)(cfg-sync Changes Pending)(Active)(/Common)(tmos)# run cm config-sync to-group LB-CLUSTER-01
 admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# 
 ```
 
-Verify the configuration is In Sync by running the command `show cm sync-status`
+Verify the configuration is In Sync by running the command `show cm sync-status`:
 
 ```
 admin@(lb01-mgt)(cfg-sync In Sync)(Active)(/Common)(tmos)# show cm sync-status
